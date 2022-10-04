@@ -6,15 +6,19 @@ from pyvirtualdisplay import Display
 import time
 import os
 
-for i in range(2):
+url = input('Enter the youtube url : ')
+views = int(input('Enter the number of views you want to add : '))
+
+
+for i in range(views):
   chromedriver = './chromedriver'
   os.environ['webdriver.chrome.driver'] = chromedriver
   driver = webdriver.Chrome(chromedriver)
-  driver.get('https://consent.youtube.com/m?continue=https://www.youtube.com/watch%3Fv%3D6vUmA09EKMQ%26t%3D2246%26themeRefresh%3D1%26cbrd%3D1&gl=FR&m=0&pc=yt&hl=fr&src=1')
+  driver.get(url)
   time.sleep(25)
   no_button = driver.find_element(By.XPATH, "//span[contains(text(), 'Tout refuser')]")
 
   ActionChains(driver).move_to_element(no_button).click(no_button).perform()
 
-  time.sleep(25)
+  time.sleep(120)
   driver.close()
