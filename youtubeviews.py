@@ -19,7 +19,7 @@ for i in range(views):
   driver = webdriver.Chrome(chromedriver)
   driver.get(url)
   time.sleep(25)
-  no_button = driver.find_element(By.XPATH, "//tp-yt-paper-button[@id='button']/yt-formatted-string[contains(text(),'Tout refuser')]")
+  no_button = driver.find_element(By.XPATH, "//*[@id='button']/yt-formatted-string[contains(text(),'Tout refuser')]")
   if no_button:
     ActionChains(driver).move_to_element(no_button).click(no_button).perform()
     time.sleep(120)
